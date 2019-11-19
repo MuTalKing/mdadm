@@ -1,13 +1,16 @@
 # Сломать/починить Raid1
-**[vagrant@otuslinux ~]$ sudo mdadm /dev/md0 --fail /dev/sdb**
+**[vagrant@otuslinux ~]$ sudo mdadm /dev/md0 --fail /dev/sdb**  
+
 mdadm: set /dev/sdb faulty in /dev/md0
 
-**[vagrant@otuslinux ~]$ cat /proc/mdstat**
+**[vagrant@otuslinux ~]$ cat /proc/mdstat**  
+
 Personalities : [raid1]
 md0 : active raid1 sdb[2](F) sdc[1]
       254976 blocks super 1.2 [2/1] [_U]
 	  
-**[vagrant@otuslinux ~]$ sudo mdadm -D /dev/md0**
+**[vagrant@otuslinux ~]$ sudo mdadm -D /dev/md0**  
+
 /dev/md0:
            Version : 1.2
      Creation Time : Fri Nov 15 14:00:26 2019
@@ -38,15 +41,18 @@ Consistency Policy : resync
        2       8       16        -      faulty   /dev/sdb
 
 
-**[vagrant@otuslinux ~]$ sudo mdadm /dev/md0 --remove /dev/sdb**
+**[vagrant@otuslinux ~]$ sudo mdadm /dev/md0 --remove /dev/sdb**  
+
 mdadm: hot removed /dev/sdb from /dev/md0
 
 
-**[vagrant@otuslinux ~]$ sudo mdadm /dev/md0 --add /dev/sdb**
+**[vagrant@otuslinux ~]$ sudo mdadm /dev/md0 --add /dev/sdb**  
+
 mdadm: added /dev/sdb
 
 
-**[vagrant@otuslinux ~]$ cat /proc/mdstat**
+**[vagrant@otuslinux ~]$ cat /proc/mdstat**  
+
 Personalities : [raid1]
 md0 : active raid1 sdb[2] sdc[1]
       254976 blocks super 1.2 [2/2] [UU]
